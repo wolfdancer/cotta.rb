@@ -18,7 +18,6 @@ SPEC = Gem::Specification.new do |spec|
   spec.summary = 'A project for a better file operation API in Ruby'
   spec.files = FileList["{docs,lib,test}/**/*"].exclude("rdoc").to_a
   spec.require_path = 'lib'
-  spec.autorequire = 'cotta'
   spec.has_rdoc = true
   spec.rubyforge_project = 'cotta'
   spec.extra_rdoc_files = ["README"]

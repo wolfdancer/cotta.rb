@@ -1,7 +1,5 @@
-require 'spec'
-dir = File.dirname(__FILE__)
-require dir + '/../test'
-require dir + '/file_system_behaviors'
+require File.dirname(__FILE__) + '/../test'
+require File.dirname(__FILE__) + '/file_system_behaviors'
 
 module Cotta
 

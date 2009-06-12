@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../../lib/Cotta/cotta'
+require File.dirname(__FILE__) + '/../test'
 require 'spec'
 require 'pathname'
 
@@ -6,7 +6,7 @@ module Cotta
   describe 'CottaFileBehaviors', :shared => true do
     before do
       create_system
-      @file = Cotta::CottaFile.new(@system, Pathname.new('dir/file.txt'))
+      @file = CottaFile.new(@system, Pathname.new('dir/file.txt'))
     end
     it 'file can be created with system and pathname' do
       @file.name.should == 'file.txt'
@@ -20,7 +20,7 @@ module Cotta
     end
 
     it 'file should know properties like parent, name, etc.' do
-      @file.parent.should == Cotta::CottaDir.new(@system, Pathname.new('dir'))
+      @file.parent.should == CottaDir.new(@system, Pathname.new('dir'))
       @file.name.should == 'file.txt'
       @file.path.should == Pathname.new('dir/file.txt')
       @file.extname.should == '.txt'
@@ -63,12 +63,12 @@ module Cotta
     end
 
     it 'should equal if same system and pathname' do
-      file2 = Cotta::CottaFile.new(@system, Pathname.new('dir/file.txt'))
+      file2 = CottaFile.new(@system, Pathname.new('dir/file.txt'))
       file2.should == @file
     end
 
     it 'should copy to another file' do
-      file2 = Cotta::CottaFile.new(@system, Pathname.new('dir2/file.txt'))
+      file2 = CottaFile.new(@system, Pathname.new('dir2/file.txt'))
       file2.exists?.should == false
       @file.save('my content')
       @file.copy_to(file2)
@@ -77,7 +77,7 @@ module Cotta
     end
 
     it 'should move file' do
-      file2 = Cotta::CottaFile.new(@system, Pathname.new('dir2/file.txt'))
+      file2 = CottaFile.new(@system, Pathname.new('dir2/file.txt'))
       file2.exists?.should == false
       @file.save('content')
       @file.move_to(file2)

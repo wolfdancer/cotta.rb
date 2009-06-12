@@ -1,6 +1,4 @@
-require 'spec'
-
-require File.dirname(__FILE__) + '/../../../lib/Cotta/cotta'
+require File.dirname(__FILE__) + '/../test'
 
 module Cotta
 describe CommandInterface do

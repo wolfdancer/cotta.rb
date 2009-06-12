@@ -1,5 +1,3 @@
-require File.dirname(__FILE__) + '/../../lib/cotta'
-
 module Cotta
 class PhysicalSystemStub
   attr_reader :executed_commands
