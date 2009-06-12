@@ -9,7 +9,18 @@ require dir + '/cotta_pathname'
 require dir + '/command_interface'
 
 module Cotta
+  def self.file(path)
+    Cotta.file(path)
+  end
   
+  def self.dir(path)
+    Cotta.dir(path)
+  end
+
+  def self.parent_dir(path)
+    Cotta.parent_dir(path)
+  end
+
 # The file factory of Cotta files that handles creation of the CottaFile and CottaDirectory
 # instances.  This class also can be used to start command lines
 class Cotta

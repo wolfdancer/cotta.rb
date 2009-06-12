@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../../../lib/Cotta/cotta'
+require File.dirname(__FILE__) + '/../test'
 require 'spec'
 require 'pathname'
 

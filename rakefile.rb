@@ -13,7 +13,7 @@ require 'specs'
 root_dir = Cotta::Cotta.parent_of(__FILE__)
 build_dir = root_dir.dir('build')
 rdoc_dir = build_dir.dir('rdoc')
-rcov_dir = rdoc_dir.dir('rcov')
+rcov_dir = build_dir.dir('rcov')
 rspec_dir = build_dir.dir('rspec')
 
 task :init do
@@ -23,7 +23,7 @@ end
 
 #desc "Run all specifications"
 Spec::Rake::SpecTask.new(:coverage) do |t|
-  t.spec_files = FileList['test/**/tc_*.rb']
+  t.spec_files = FileList['test/**/*_spec.rb']
   t.rcov = true
   t.rcov_dir = rcov_dir.path
   outputfile = rspec_dir.file('index.html').path

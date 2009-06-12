@@ -2,13 +2,11 @@ require 'spec'
 
 require File.dirname(__FILE__) + '/../test'
 
-module Cotta
-
 describe Cotta do
   before do
     # Given
-    @system = InMemorySystem.new
-    @cotta = Cotta.new(@system)
+    @system = Cotta::InMemorySystem.new
+    @cotta = Cotta::Cotta.new(@system)
   end
   
   it 'shell out command to system' do
@@ -47,10 +45,8 @@ describe Cotta do
   end
   
   it 'create parent directory directly from __FILE__' do
-    actual = Cotta::Cotta.parent_dir(__FILE__)
+    actual = Cotta.parent_dir(__FILE__)
     actual.name.should == 'cotta'
   end
   
-end
-
 end
