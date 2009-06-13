@@ -21,7 +21,7 @@ module Cotta
     Cotta.parent_dir(path)
   end
 
-# The file factory of Cotta files that handles creation of the CottaFile and CottaDirectory
+# The file factory of Cotta files that handles creation of the CottaFile and CottaDir
 # instances.  This class also can be used to start command lines
 class Cotta
   attr_accessor :command_interface

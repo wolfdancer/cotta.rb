@@ -1,1 +1,66 @@
-Hello Cotta World!
+Welcome to the Ruby version of the {Cotta file API}[http://cotta.rubyforge.org]
+
+= Mission
+
+Provide a lightweight, simple and sensible API to file operation and testing.
+See {Cotta Power}[http://cotta.sourceforge.net/power.html] for its motivation
+
+
+= Install It
+
+The easiest way to install the install cotta using RubyGems:
+
+  sudo gem install cotta
+
+= Features
+
+Cotta is just a plain Ruby API, so you can use it wherever you can use Ruby.
+
+To used the new API just require the client driver:
+
+   require "rubygems"
+   require "cotta"
+
+For a fully backward compatible API you can start with:
+
+   require "rubygems"
+   gem "cotta"
+   require "cotta"
+
+For instance
+to write a little Ruby script using cotta you could write something like:
+
+   #!/usr/bin/env ruby
+   #
+   # Sample Ruby script using the Cotta API
+   #
+   require "rubygems"
+   gem "cotta", ">=1.0.0"
+   require "cotta"
+   #system implementation is injected here
+   cotta = Cotta::Cotta.new()
+   file2 = cotta.file('dir2/file.txt')
+   file2.exists?.should_equal false
+   # parent directories are created automatically
+   @file.save('my content')
+   @file.copy_to(file2)
+   file2.exists?.should_equal true
+   file2.load.should_equal 'my content'
+   file2.read {|file| puts file.gets}
+
+= Writing Tests
+
+To test your code that uses Cotta API, you just need to pass in a Cotta instance that is backed by an in-memory
+file system: Cotta::Cotta.new(Cotta::InMemorySystem.new)
+
+= Resources
+
+* Source Code at http://github.com/wolfdancer/cotta
+* Report bugs at http://github.com/wolfdancer/cotta/issues
+* Browse API at http://cotta.rubyforge.org
+* Discuss at http://groups.google.com/group/cotta
+
+
+= Core Team
+
+* Shane Duan
