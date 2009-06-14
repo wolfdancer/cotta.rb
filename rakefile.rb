@@ -33,7 +33,7 @@ end
 
 Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.main = "README"
-  rdoc.rdoc_files.include('README', "lib/**/*.rb")
+  rdoc.rdoc_files.include('README', "lib/cotta/*.rb")
   rdoc.options << "--all"
   rdoc.rdoc_dir = rdoc_dir.to_s
 end

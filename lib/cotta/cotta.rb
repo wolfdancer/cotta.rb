@@ -1,22 +1,19 @@
-dir = File.dirname(__FILE__)
-
-require 'pathname'
-require dir + '/physical_system'
-require dir + '/io_chain'
-require dir + '/cotta_dir'
-require dir + '/cotta_file'
-require dir + '/cotta_pathname'
-require dir + '/command_interface'
-
+# Cotta module that contains all the classes used for file operations
+# see link:files/README.html
 module Cotta
+  # Creates CottaFile repersenting physical file
   def self.file(path)
     Cotta.file(path)
   end
   
+  # Creates CottaDir representing physical directory
   def self.dir(path)
     Cotta.dir(path)
   end
 
+  # Creates CottaDir that is the parent of the path
+  # This is typically used with __FILE__
+  # e.g. dir = Cotta.parent_dir(__FILE__)
   def self.parent_dir(path)
     Cotta.parent_dir(path)
   end

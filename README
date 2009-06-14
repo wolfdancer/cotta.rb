@@ -1,8 +1,8 @@
 Welcome to the Ruby version of the {Cotta file API}[http://cotta.rubyforge.org]
 
-= Mission
+= Introduction
 
-Provide a lightweight, simple and sensible API to file operation and testing.
+Cotta project is created to provide a lightweight, simple and sensible API to file operation and testing.
 See {Cotta Power}[http://cotta.sourceforge.net/power.html] for its motivation
 
 
@@ -30,28 +30,33 @@ For a fully backward compatible API you can start with:
 For instance
 to write a little Ruby script using cotta you could write something like:
 
-   #!/usr/bin/env ruby
-   #
-   # Sample Ruby script using the Cotta API
-   #
-   require "rubygems"
-   gem "cotta", ">=1.0.0"
-   require "cotta"
-   #system implementation is injected here
-   cotta = Cotta::Cotta.new()
-   file2 = cotta.file('dir2/file.txt')
-   file2.exists?.should_equal false
-   # parent directories are created automatically
-   @file.save('my content')
-   @file.copy_to(file2)
-   file2.exists?.should_equal true
-   file2.load.should_equal 'my content'
-   file2.read {|file| puts file.gets}
+    #!/usr/bin/env ruby
+    #
+    # Sample Ruby script using the Cotta API
+    #
+    require "rubygems"
+    gem "cotta", ">=1.0.0"
+    require "cotta"
+
+    #system implementation is injected here
+    cotta = Cotta::Cotta.new()
+    file = cotta.file('dir/file.txt')
+    file.should_not be_exists
+    # parent directories are created automatically
+    file.save('my content')
+    file2 = cotta.file('dir/file2.txt')
+    file2.should_not be_exists
+    file.copy_to(file2)
+    file2.should be_exists
+    file2.load.should == 'my content'
+    file2.read {|file| puts file.gets}
 
 = Writing Tests
 
 To test your code that uses Cotta API, you just need to pass in a Cotta instance that is backed by an in-memory
-file system: Cotta::Cotta.new(Cotta::InMemorySystem.new)
+file system:
+
+    cotta = Cotta::Cotta.new(Cotta::InMemorySystem.new)
 
 = Resources
 
@@ -61,6 +66,6 @@ file system: Cotta::Cotta.new(Cotta::InMemorySystem.new)
 * Discuss at http://groups.google.com/group/cotta
 
 
-= Core Team
+= Team
 
 * Shane Duan
