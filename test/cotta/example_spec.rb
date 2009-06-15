@@ -5,7 +5,7 @@ require File.dirname(__FILE__) + '/../test'
 describe Cotta do
   it 'should run example' do
     #system implementation is injected here
-    cotta = Cotta::FileFactory.new(Cotta::InMemorySystem.new)
+    cotta = Cotta.in_memory
     file = cotta.file('dir/file.txt')
     file.should_not be_exists
     # parent directories are created automatically

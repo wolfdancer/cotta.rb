@@ -9,15 +9,17 @@ module Cotta
       @command_interface = CommandInterface.new
     end
 
+=begin not for 1.0 release
     # Invoke the command line through the backing system
     def shell(command_line, &block)
       @system.shell(command_line, &block)
     end
-
+=end
     def pwd
       dir(@system.pwd)
     end
 
+=begin not for 1.0 release
     # Starts the process.  Unlike shell method, this method does not
     # collect the output, thus suitable for starting a server in Ruby
     # and leave it running for a long time
@@ -40,7 +42,9 @@ module Cotta
         @command_interface = CommandInterface.new
       end
     end
+=end
 
+    # Returns a CottaDir instance with the given path
     def dir(path)
       return nil unless path
       return CottaDir.new(@system, Pathname.new(path))
@@ -58,23 +62,25 @@ module Cotta
       FileFactory.new(InMemorySystem.new)
     end
 
-    # Creates a CottDirectory with the PhysicalSystem
+    # Returns a CottDirectory with the PhysicalSystem
     def self::dir(path)
       return nil unless path
       return FileFactory.new.dir(File.expand_path(path))
     end
 
-    # Creates a CottaFile with the PhysicalSystem
+    # Returns a CottaFile in the current system with the path
     def file(path)
       return nil unless path
       return CottaFile.new(@system, Pathname.new(path))
     end
 
+    # Returns a CottaFile with the PhysicalSystem and the given path
     def self::file(path)
       return nil unless path
       return FileFactory.physical.file(File.expand_path(path))
     end
 
+    # Returns a CottaDir with the PhysicalSystem and is the parent of the given file path
     def self::parent_dir(path)
       return FileFactory.file(path).parent
     end
@@ -92,6 +98,7 @@ module Cotta
       return entry_instance
     end
 
+=begin not for release 1.0
     def environment!(variable)
       @system.environment!(variable)
     end
@@ -99,7 +106,8 @@ module Cotta
     def environment(variable, default = '')
       @system.environment(variable, default)
     end
-  end
+=end
 
+  end
   PHYSICAL = FileFactory.new(PhysicalSystem.new)
 end

@@ -9,6 +9,7 @@ describe Cotta do
     @cotta = Cotta::FileFactory.new(@system)
   end
   
+=begin not for release 1.0
   it 'shell out command to system' do
     # Given
     # When
@@ -18,6 +19,7 @@ describe Cotta do
     @system.executed_commands.length.should== 1
     @system.executed_commands[0].should == 'shell command'
   end
+=end
   
   it 'instantiate dir from cotta' do
     dir = @cotta.dir('dirname')
