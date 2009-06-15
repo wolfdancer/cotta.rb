@@ -8,11 +8,11 @@ module IoChain
   describe IoChain do
     include IoChain
     before do
-      @cotta = Cotta.new(PhysicalSystemStub.new)
+      @cotta = FileFactory.new(PhysicalSystemStub.new)
     end
 
     it 'copy binary io' do
-      file = Cotta.parent_of(__FILE__).file('logo.gif')
+      file = FileFactory.parent_dir(__FILE__).file('logo.gif')
       target = @cotta.file('target.gif')
       file.read_binary do |input|
         target.write_binary do |output|

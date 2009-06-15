@@ -6,7 +6,7 @@ describe Cotta do
   before do
     # Given
     @system = Cotta::InMemorySystem.new
-    @cotta = Cotta::Cotta.new(@system)
+    @cotta = Cotta::FileFactory.new(@system)
   end
   
   it 'shell out command to system' do

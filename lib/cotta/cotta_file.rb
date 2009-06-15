@@ -12,7 +12,7 @@ module Cotta
     end
 
     def cotta
-      Cotta.new(@system)
+      FileFactory.new(@system)
     end
 
     def name

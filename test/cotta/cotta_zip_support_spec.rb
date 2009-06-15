@@ -2,13 +2,13 @@ require 'spec'
 require File.dirname(__FILE__) + '/../test'
 
 module Cotta
-describe Cotta, 'zip support' do
+describe FileFactory, 'zip support' do
   before do
-    @cotta = Cotta.new(InMemorySystem.new)
+    @cotta = FileFactory.new(InMemorySystem.new)
   end
   
   it 'extract from a tar file' do
-    tar_file = Cotta.parent_of(__FILE__).file('tar_test.tar')
+    tar_file = FileFactory.parent_dir(__FILE__).file('tar_test.tar')
     dir = @cotta.dir('dir/extract')
     tar_file.extract(dir)
     dir.list.size.should == 3

@@ -17,7 +17,7 @@ describe PhysicalSystem, 'with cotta file' do
   end
   
   it 'copying binary files properly' do
-    logo_gif = Cotta.parent_of(__FILE__).file('logo.gif')
+    logo_gif = FileFactory.parent_dir(__FILE__).file('logo.gif')
     content = logo_gif.read_binary {|io| io.read}
     target = CottaFile.new(@system, Pathname.new('dir/logo.gif'))
     target.parent.mkdirs
@@ -30,7 +30,7 @@ describe PhysicalSystem, 'with cotta file' do
   end
 
   it 'zip and unzip' do
-    logo_gif = Cotta.parent_of(__FILE__).file('logo.gif')
+    logo_gif = FileFactory.parent_dir(__FILE__).file('logo.gif')
     content = logo_gif.read_binary {|io| io.read}
     dir = CottaDir.new(@system, Pathname.new('dir'))
     target_dir = dir.dir('target')

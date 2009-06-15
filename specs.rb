@@ -5,7 +5,7 @@ require 'rubygems'
 require 'rake'
 require dir + '/lib/cotta'
 
-root = Cotta::Cotta.parent_of(__FILE__)
+root = Cotta::FileFactory.parent_dir(__FILE__)
 VERSION_NUMBER = root.file('lib/cotta/version').load
 
 SPEC = Gem::Specification.new do |spec|

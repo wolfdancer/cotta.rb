@@ -1,8 +1,8 @@
 require 'spec'
 
 dir = File.dirname(__FILE__)
-require dir + '/cotta_dir_behaviors'
 require dir + '/../test'
+require dir + '/cotta_dir_behaviors'
 
 describe Cotta::InMemorySystem, 'with Cotta Dir' do
   it_should_behave_like 'CottaDirBehaviors'

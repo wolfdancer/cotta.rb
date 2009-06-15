@@ -39,7 +39,7 @@ to write a little Ruby script using cotta you could write something like:
     require "cotta"
 
     #system implementation is injected here
-    cotta = Cotta::Cotta.new()
+    cotta = Cotta.physical
     file = cotta.file('dir/file.txt')
     file.should_not be_exists
     # parent directories are created automatically
@@ -56,7 +56,7 @@ to write a little Ruby script using cotta you could write something like:
 To test your code that uses Cotta API, you just need to pass in a Cotta instance that is backed by an in-memory
 file system:
 
-    cotta = Cotta::Cotta.new(Cotta::InMemorySystem.new)
+    cotta = Cotta.in_memory
 
 = Resources
 

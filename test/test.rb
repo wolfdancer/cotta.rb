@@ -12,7 +12,7 @@ module Cotta
     end
 
     def current(file)
-      Cotta.file(file).parent
+      FileFactory.file(file).parent
     end
 
   end

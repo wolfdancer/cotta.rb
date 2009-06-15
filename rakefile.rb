@@ -10,7 +10,7 @@ require 'rake/rdoctask'
 require 'rcov/rcovtask'
 require 'specs'
 
-root_dir = Cotta::Cotta.parent_of(__FILE__)
+root_dir = Cotta::FileFactory.parent_dir(__FILE__)
 build_dir = root_dir.dir('build')
 rdoc_dir = build_dir.dir('rdoc')
 rcov_dir = build_dir.dir('rcov')
