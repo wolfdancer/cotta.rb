@@ -8,11 +8,11 @@ describe Cotta::InMemorySystem, 'with Cotta Dir' do
   it_should_behave_like 'CottaDirBehaviors'
 
   def create_system
-    @system = Cotta::InMemorySystem.new
+    @system = Cotta.in_memory
   end
 
   it 'dir should not be equal if system different' do
-    (Cotta::CottaDir.new(Cotta::InMemorySystem.new, Pathname.new('dir')) == @dir).should == false
+    (Cotta::CottaDir.new(Cotta.in_memory, Pathname.new('dir')) == @dir).should == false
   end
 
   it 'to_s and inspect' do

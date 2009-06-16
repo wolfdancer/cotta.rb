@@ -5,7 +5,7 @@ require 'pathname'
 module Cotta
   describe 'CottaFileBehaviors', :shared => true do
     before do
-      create_system
+      @system = create_system
       @file = CottaFile.new(@system, Pathname.new('dir/file.txt'))
     end
     it 'file can be created with system and pathname' do
@@ -122,6 +122,18 @@ module Cotta
       @file.older_than?(file2).should == true
     end
 
+    it 'copy binary io' do
+      file = FileFactory.parent_dir(__FILE__).file('logo.gif')
+      target = @file
+      file.read_binary do |input|
+        target.write_binary do |output|
+          CottaFile.copy_io(input, output)
+        end
+      end
+      expect_stat = file.stat
+      actual_stat = target.stat
+      actual_stat.size.should == expect_stat.size
+    end
   end
 
 end

@@ -1,5 +1,7 @@
 # Cotta module that contains all the classes used for file operations
 # see link:files/README.html
+# There are also four methods on the module for the most common ways to
+# start with Cotta API
 module Cotta
   # Creates CottaFile repersenting physical file
   def self::file(path)
@@ -26,5 +28,10 @@ module Cotta
   # Returns the file factory backed by in-memory system
   def self::in_memory
     FileFactory.in_memory
+  end
+
+  # returns the file factory backed by the given system
+  def self::factory(system)
+    FileFactory.new(system)
   end
 end

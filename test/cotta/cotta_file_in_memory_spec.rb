@@ -8,7 +8,7 @@ module Cotta
     it_should_behave_like 'CottaFileBehaviors'
 
     def create_system
-      @system = InMemorySystem.new
+      @system = Cotta.in_memory
     end
 
   end

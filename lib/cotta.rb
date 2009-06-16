@@ -1,6 +1,5 @@
 require 'pathname'
 require File.dirname(__FILE__) + '/cotta/cotta'
-require File.dirname(__FILE__) + '/cotta/impl/io_chain'
 require File.dirname(__FILE__) + '/cotta/cotta_dir'
 require File.dirname(__FILE__) + '/cotta/cotta_file'
 require File.dirname(__FILE__) + '/cotta/impl/cotta_pathname'

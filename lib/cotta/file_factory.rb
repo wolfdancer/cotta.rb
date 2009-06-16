@@ -2,11 +2,14 @@ module Cotta
 # The file factory of Cotta files that handles creation of the CottaFile and CottaDir
 # instances.  This class also can be used to start command lines
   class FileFactory
-    attr_accessor :command_interface
+    # file system that is backing the current file factory
+    attr_reader :system
+    # attr_accessor :command_interface
 
+    # Creates an instance of the file factory with the given system
     def initialize(system=PhysicalSystem.new)
       @system = system
-      @command_interface = CommandInterface.new
+#      @command_interface = CommandInterface.new
     end
 
 =begin not for 1.0 release
@@ -15,6 +18,7 @@ module Cotta
       @system.shell(command_line, &block)
     end
 =end
+    # Returns the current directory
     def pwd
       dir(@system.pwd)
     end
@@ -47,7 +51,7 @@ module Cotta
     # Returns a CottaDir instance with the given path
     def dir(path)
       return nil unless path
-      return CottaDir.new(@system, Pathname.new(path))
+      return CottaDir.new(self, Pathname.new(path))
     end
 
     # Returns the FileFactory instance that represents the
@@ -65,24 +69,24 @@ module Cotta
     # Returns a CottDirectory with the PhysicalSystem
     def self::dir(path)
       return nil unless path
-      return FileFactory.new.dir(File.expand_path(path))
+      return physical.dir(File.expand_path(path))
     end
 
     # Returns a CottaFile in the current system with the path
     def file(path)
       return nil unless path
-      return CottaFile.new(@system, Pathname.new(path))
+      return CottaFile.new(self, Pathname.new(path))
     end
 
     # Returns a CottaFile with the PhysicalSystem and the given path
     def self::file(path)
       return nil unless path
-      return FileFactory.physical.file(File.expand_path(path))
+      return physical.file(File.expand_path(path))
     end
 
     # Returns a CottaDir with the PhysicalSystem and is the parent of the given file path
     def self::parent_dir(path)
-      return FileFactory.file(path).parent
+      return file(path).parent
     end
 
     # Creates the entry given a path.  This will return either

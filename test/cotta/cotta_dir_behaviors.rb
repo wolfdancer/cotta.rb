@@ -4,7 +4,7 @@ require 'pathname'
 
 describe 'CottaDirBehaviors', :shared=>true do
   before do
-    create_system
+    @system = create_system
     @root = Cotta::CottaDir.new(@system, Pathname.new('.'))
     @dir = @root.dir('dir')
     @current = Dir.pwd
@@ -170,17 +170,15 @@ describe 'CottaDirBehaviors', :shared=>true do
 
   it 'list on not existing directory' do
     dir = Cotta::CottaDir.new(@system, Pathname.new('no/such/directory'))
-    Proc.new {
+    Proc.new do
       dir.list
-    }.should raise_error(Errno::ENOENT)
+    end.should raise_error(Errno::ENOENT)
   end
 
   it 'allow filter for archive' do
     @dir.file('in/in.txt').save('test')
     @dir.file('out/out.txt').save('test')
-    result = @dir.archive {|entry|
-      entry.name != 'out'
-    }
+    result = @dir.archive {|entry|entry.name != 'out' }
     target = result.extract(@dir.dir('extract'))
     target.dir('out').should_not be_exist
     target.dir('in').should be_exist
@@ -192,13 +190,13 @@ describe 'CottaDirBehaviors', :shared=>true do
     dir.mkdirs
     result = dir.chdir
     result.should == 0
-    current = dir.cotta.pwd
+    current = dir.factory.pwd
     value = @root.chdir do
-      dir.cotta.pwd.should == @root
+      dir.factory.pwd.should == @root
       'value'
     end
     value.should == 'value'
-    dir.cotta.pwd.should == current
+    dir.factory.pwd.should == current
   end
 
 end

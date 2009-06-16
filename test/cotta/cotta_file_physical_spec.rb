@@ -9,7 +9,7 @@ describe PhysicalSystem, 'with cotta file' do
   it_should_behave_like 'CottaFileBehaviors'
 
   def create_system
-    @system = PhysicalSystemStub.new
+    @system = Cotta.factory(PhysicalSystemStub.new)
   end
 
   before do
