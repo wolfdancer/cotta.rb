@@ -42,11 +42,14 @@ task :default => [:coverage, :rdoc, :package]
 task :coverage => [:init]
 task :local_install => [:package]
 
-# ??? if we use the rakt gem task, it will somehow be built multiple times and fail???
+task :default do
+  rcov_dir.copy_to rdoc_dir.dir('rcov')
+  rspec_dir.copy_to rdoc_dir.dir('rspec')
+end
+
 task :package do
   require 'rubygems'
   require 'rubygems/gem_runner'
-  # Gem::manage_gems
   Gem::Builder.new(SPEC).build
 end
 

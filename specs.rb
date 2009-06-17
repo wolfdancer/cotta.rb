@@ -21,4 +21,5 @@ SPEC = Gem::Specification.new do |spec|
   spec.has_rdoc = true
   spec.rubyforge_project = 'cotta'
   spec.extra_rdoc_files = ["README"]
+  spec.description = 'a lightweight, simple and sensible API to file operation and testing'
 end

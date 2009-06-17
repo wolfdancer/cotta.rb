@@ -65,6 +65,10 @@ file system:
 * Browse API at http://cotta.rubyforge.org
 * Discuss at http://groups.google.com/group/cotta
 
+= Reports
+
+* rSpec: {rspec}[link:rspec/index.html]
+* code coverage:{rcov}[link:rcov/index.html]
 
 = Team
 
