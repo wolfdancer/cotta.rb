@@ -9,7 +9,7 @@ root = Cotta::FileFactory.parent_dir(__FILE__)
 VERSION_NUMBER = root.file('lib/cotta/version').load
 
 SPEC = Gem::Specification.new do |spec|
-  spec.name = 'Cotta'
+  spec.name = 'cotta'
   spec.version = VERSION_NUMBER
   spec.author = 'Shane Duan'
   spec.email = 'cotta@googlegroups.com'
